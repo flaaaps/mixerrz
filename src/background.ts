@@ -1,6 +1,7 @@
 const CLIENT_ID = encodeURIComponent("d6300d05a68b405c862121ab0c71130a")
 const RESPONSE_TYPE = encodeURIComponent("token")
-const REDIRECT_URI = encodeURIComponent("https://bmpehmhfieilbhonekjjngljoldjfoch.chromiumapp.org/")
+console.log("Runtime id:", chrome.runtime.id)
+const REDIRECT_URI = encodeURIComponent(`https://${chrome.runtime.id}.chromiumapp.org/`) // bmpehmhfieilbhonekjjngljoldjfoch
 const SCOPE = encodeURIComponent("user-read-email")
 const SHOW_DIALOG = encodeURIComponent("false")
 let STATE = ""
