@@ -1,5 +1,4 @@
 chrome.runtime.sendMessage({ action: "authStateCheck" }, response => {
-    console.log(response.signedIn, "SIGNED IN?!")
     if (response.signedIn) {
         document.getElementById("main").style.display = "block"
     } else {
@@ -25,9 +24,9 @@ const scanBtn = document.getElementById("scan-btn")
 
 scanBtn.addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        console.log("We got some tabs:", tabs)
         chrome.tabs.sendMessage(tabs[0].id, { action: "scan" }, function (response) {
             console.log(response)
+            document.getElementById("status").innerText = response.success ? response.message : response.error
         })
     })
 })
